@@ -1,7 +1,7 @@
-package com.example.demo.Sevice;
+package com.example.demo.sevice;
 
-import com.example.demo.Dao.UserDao;
-import com.example.demo.Entity.UserEntity;
+import com.example.demo.dao.UserDao;
+import com.example.demo.entity.UserEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
