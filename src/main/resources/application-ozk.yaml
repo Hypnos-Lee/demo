@@ -1,10 +1,16 @@
 spring:
+  mvc:
+    static-path-pattern: /**
+  resources:
+    static-locations: classpath:/META-INF/resources/,classpath:/resources/,classpath:/static/,classpath:/public/
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://127.0.0.1:3306/test?characterEncoding=UTF-8
+    url: jdbc:mysql://127.0.0.1:3306/test?serverTimezone=UTC&useUnicode=true&characterEncoding=utf8&useSSL=true
     username: root
     password: aaaa
   jpa:
     hibernate:
       ddl-auto: update
     show-sql: true
+server:
+  port: 8080
