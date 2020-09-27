@@ -23,31 +23,34 @@ public class UserController {
 
 
     @PostMapping("login")
-    public Result login(@PathParam("userName") String userName,@PathParam("passWord") String passWord){
+    public Result<String> login(@PathParam("userName") String userName, @PathParam("passWord") String passWord){
 //    public Result login(@RequestBody UserEntity requestUser){
         UserEntity requestUser = new UserEntity();
         requestUser.setUserName(userName);
         requestUser.setPassWord(passWord);
 
-        Result result = new Result(200,"登录成功");
+        Result<String> result = new Result<>(200,"登录成功");
         if(!userService.isExist(requestUser)){
-            result.setStatusAndMsg(201,"用户不存在");
+            result.setStatus(201);
+            result.setMsg("用户不存在");
         }
         else if(!userService.isPswCorrect(requestUser)){
-            result.setStatusAndMsg(201,"账号或密码不正确");
+            result.setStatus(201);
+            result.setMsg("账号或密码错误");
         }
         return result;
     }
 
     @PostMapping("/register")
-    public Result register(@PathParam("userName") String userName,@PathParam("passWord") String passWord){
+    public Result<String > register(@PathParam("userName") String userName, @PathParam("passWord") String passWord){
         UserEntity requestUser = new UserEntity();
         requestUser.setUserName(userName);
         requestUser.setPassWord(passWord);
 
-        Result result = new Result(200,"注册成功");
+        Result<String > result = new Result<String >(200,"注册成功");
         if(userService.isExist(requestUser)){
-            result.setStatusAndMsg(201,"用户已存在");
+            result.setStatus(201);
+            result.setMsg("用户已存在");
         }
         else{
             userService.save(requestUser);
