@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .fts20{
+            font-size: 25px;
+        }
+        .mr0{
+            margin: 0 auto;
+        }
+        a{
+            text-decoration: none;
+            color:darkgray;
+        }
+        li{
+            list-style: none;
+            margin-top: 20px;
+
+        }
+        .sidebar1{
+            position: absolute;
+            width: 20%;
+            height: 410px;
+
+        }
+        .ifameid{
+            width: 100%;
+        }
+        .content{
+            width: 80%;
+            height: 410px;
+            float: right;
+        }
+        hr{
+            width: 97px;
+            float: left;
+        }
+    </style>
+
+
+    <script src="http://libs.baidu.com/jquery/1.9.0/jquery.js"></script>
+    <script src="https://libs.baidu.com/jquary/3.3.1/jquary.min.js"></script>
+</head>
+<body>
+<script type="text/javascript">
+
+    naviget = function (url){
+        var sina = document.getElementById("i")
+        sina.src = url;
+        console.log(url);
+    }
+</script>
+
+<div class="sidebar1" align="left" style="background: darkslategrey">
+    <div class="fts20">223-在线音乐网站</div>
+    <ul  class="nav">
+        <li><a class="fts20"  href="#menu1" ></a></li>
+        <hr >
+        <li><a class="fts20"  href="#menu2"  onclick="naviget('allsong.html')">所有歌曲</a></li>
+        <hr>
+        <li><a class="fts20" type="button" href="#menu3"  onclick="naviget('namesearch.html')">搜索歌名</a></li>
+        <hr>
+        <li><a class="fts20" type="button" href="#menu3"  onclick="naviget('singersearch.html')">搜索歌手</a></li>
+        <hr>
+        <li><a class="fts20" href="#menu4"  onclick="naviget('savesong.html')">添加歌曲</a></li>
+
+
+    </ul>
+    <!-- end .sidebar1 --></div>
+
+
+
+<div class="content" >
+    <iframe  id="i" target="_blank" class="ifameid" name="test" align="right"  style=" width: 100%; height:100%"></iframe>
+    <!-- end .content -->
+</div>
+
+</body>
+</html>
