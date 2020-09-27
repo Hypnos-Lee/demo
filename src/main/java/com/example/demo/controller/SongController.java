@@ -24,7 +24,7 @@ public class SongController {
         return result;
     }
 
-    @GetMapping("/allsong")
+    @PostMapping("/allsong")
     public Result<List<SongEntity>> getAllSong(){
         Result<List<SongEntity>> result = new Result<>(200,"查询成功");
         result.setData(songService.findAll());
