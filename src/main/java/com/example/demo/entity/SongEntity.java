@@ -16,7 +16,7 @@ public class SongEntity {
     private String songName;
     private String singer;
     private String description;
-    private String url;
+    private String songUrl;
 
     public SongEntity() { }
 
@@ -24,7 +24,7 @@ public class SongEntity {
         this.songName = songName;
         this.singer = singer;
         this.description = description;
-        this.url = url;
+        this.songUrl = url;
     }
 
 
@@ -42,7 +42,7 @@ public class SongEntity {
     }
 
     public void setUrl(String url) {
-        this.url = url;
+        this.songUrl = url;
     }
 
     public int getSongId() {
@@ -62,6 +62,6 @@ public class SongEntity {
     }
 
     public String getUrl() {
-        return url;
+        return songUrl;
     }
 }

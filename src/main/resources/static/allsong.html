@@ -7,6 +7,9 @@
     <script src="https://libs.baidu.com/jquary/3.3.1/jquary.min.js"></script>
 </head>
 <body>
+<div id="searchAll" style="width: 100%">
+
+</div>
 <script>
     window.onload = login();
      function login (){
@@ -18,18 +21,18 @@
             contentType:'application/x-www-form-urlencoded;charset=UTF-8',
             success:function (arg){
                 var data = eval(arg.data);
-                var html = "<div>";
-
-                var html1 = "</div>";
-                var trhtml = "<span style='font-size: 20px; margin-left: 10px ;line-height: 50px ;'>";
-                var trhtml1 = "</span>";
-               // singer singName description
+                var html = "";
+                var html1 = "";
+                var trhtml = "<div style='font-size: 20px; margin-left: 5% ;line-height: 50px;display: inline-block;width: 200px!important; overflow: hidden''>";
+                var trhtml1 = "</div>";
+                // singer singName description
                 for (var i = 0 ; i < data.length;i++ ){
                     html+= trhtml+data[i].songName+trhtml1 + trhtml+data[i].singer+trhtml1 + trhtml+data[i].description;
-                  var aud =  "<audio src="+data[i].url+" controls='controls' style='right: 0px ;position: absolute'></audio>"
-                    html +=aud + "<br>" + "<hr>"+trhtml1;
+                    var aud =  "<audio src="+data[i].songUrl+" controls='controls' style='right: 7% ;position: absolute'></audio>"
+                    html +=aud + "<br>" + trhtml1+"<hr style='1100px'>";
                 }
-                document.write(html+html1);
+                // document.write();
+                document.getElementById("searchAll").innerHTML = html+html1;
             },
             error:function (e) {
             }

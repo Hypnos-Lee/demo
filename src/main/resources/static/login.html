@@ -1,91 +1,59 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
     <meta charset="UTF-8">
-
-    <title>Title</title>
+    <title>Login</title>
     <style>
-        .nav{
-            padding-left: 0px;
-            text-align: center;
-        }
-        .fts20{
-            font-size: 25px;
-            align-content: center;
-        }
-        .mr0{
-            margin: 0 auto;
-        }
-        a{
-            text-decoration: none;
-            color:darkgray;
-        }
-        li{
-            list-style: none;
-            margin-top: 20px;
-
-        }
-        .sidebar1{
-            position: absolute;
-            width: 20%;
-            left: 0px;
-            top: 0;
-            /*height: 410px;*/
-
-        }
-        .ifameid{
-            width: 100%;
-        }
-        .content{
-            width: 80%;
-            /*height: 410px;*/
-            float: right;
-        }
-        hr{
-            width: 97px;
-
-            text-align: center;
-        }
     </style>
-
-
+    <link rel="stylesheet" href="login.css" type="text/css" />
     <script src="http://libs.baidu.com/jquery/1.9.0/jquery.js"></script>
     <script src="https://libs.baidu.com/jquary/3.3.1/jquary.min.js"></script>
 </head>
 <body>
-<script type="text/javascript">
+<div id="login">
+    <h1>Login</h1>
+    <form action=""  method="post" onsubmit="return false" id="formtest">
 
-    naviget = function (url){
-        var sina = document.getElementById("i")
-        sina.src = url;
-        console.log(url);
-    }
-</script>
-
-<div class="sidebar1" align="left" style="background: darkslategrey; height: 100vh">
-<!--    <div align="center" style="font-size: 25px;  color: chocolate; padding-top: 50px; padding-bottom: 30px">在线音乐</div>-->
-           <ul  class="nav">
-           <li><img src="https://s1.ax1x.com/2020/09/27/0AJYWT.png" width="100%"></li>
-          <li><a class="fts20"  href="#menu1" onclick="naviget('shouye.html')">首页</a></li>
-        <hr >
-        <li><a class="fts20"  href="#menu2"  onclick="naviget('allsong.html')">所有歌曲</a></li>
-        <hr>
-        <li><a class="fts20" type="button" href="#menu3"  onclick="naviget('namesearch.html')">搜索歌名</a></li>
-        <hr>
-        <li><a class="fts20" type="button" href="#menu3"  onclick="naviget('singersearch.html')">搜索歌手</a></li>
-        <hr>
-        <li><a class="fts20" href="#menu4"  onclick="naviget('savesong.html')">添加歌曲</a></li>
-
-
-    </ul>
-    <!-- end .sidebar1 --></div>
-
-
-
-<div class="content" >
-    <iframe  id="i" target="_blank" class="ifameid" name="test" align="right"  style=" width: 100%; height:95vh"></iframe>
-    <!-- end .content -->
+            <input type="text"  name="userName" id="userName"   style="color:cyan;" placeholder="登录/输入账号/密码 "><br>
+            <input type="password" name="passWord" id="passWord">
+    <!--        <input type="button" value="登录" onclick ="sign('in');"/>-->
+    <!--        <input type="button" value="注册" onclick ="sign('up');"/>-->
+        <button class="but"   onclick ="sign('in');">登录</button>
+        <button class="but"  style="float: right" onclick ="sign('up');">注册</button>
+    </form>
 </div>
+<script type="text/javascript" >
 
+    sign = function (e){
+        var url = e=="in"?"/login":"/register"
+
+        var userName = document.getElementById("userName").value;
+        var passWord = document.getElementById("passWord").value;
+        $.ajax({
+            url:url,
+            type:'POST',
+            dataType:"json",
+            contentType:'application/x-www-form-urlencoded;charset=UTF-8',
+            data: {"userName": userName, "passWord": passWord},
+            success:function (arg){
+                if(arg.status==200&&arg.msg!="注册成功"){
+                    window.open('index.html','_self');
+                }else
+                {
+                    alert(arg.msg);
+                }
+
+            },
+            error:function (e) {
+            }
+
+        })
+
+    }
+
+
+
+</script>
 </body>
 </html>

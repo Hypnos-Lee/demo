@@ -1,10 +1,134 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Login</title>
+    <script src="http://libs.baidu.com/jquery/1.9.0/jquery.js"></script>
+    <script src="https://libs.baidu.com/jquary/3.3.1/jquary.min.js"></script>
+    <style>
+        input{
+            color: #56536A;
+            width: 300px;
+            margin-left: 5%;
+            height: 20px;
+            margin-bottom: 10px;
+            margin-top: 10px;
+            outline: none;
+            padding: 10px;
+            font-size: 20px;
+
+            /*text-shadow:1px 1px 1px;*/
+            border-top: 1px solid #312E3D;
+            border-left: 1px solid #312E3D;
+            border-right: 1px solid #312E3D;
+            border-bottom: 1px solid #56536A;
+            border-radius: 4px;
+            background-color:#E8F0FE;
+        }
+        .but{
+            width: 100px;
+            height: 45px;
+            min-height: 22px;
+            background-color: #4a77d4;
+            border: 1px solid #3762bc;
+            color: #fff;
+            padding: 8px 14px;
+            font-size: 20px;
+            line-height: normal;
+            border-radius: 5px;
+            margin: 0;
+            margin-top: 10px;
+            position: relative;
+            left: 80px;
+        }
+        th{
+            font-size: 20px;
+        }
+    </style>
 </head>
 <body>
-savesonghahas
+<div style="width: 100vh">
+    <div id="login" style="left: 50% ;position: relative">
+        <div class="result_wrap">
+            <form action="" onsubmit="return false" method="#" >
+                <table class="add_tab">
+                    <tbody>
+                    <tr>
+                        <th><i class="require" style="color: red">*</i> 歌名:</th>
+                        <td>
+                            <input type="text" name="cate_name">
+                        </td>
+                    </tr>
+                    <tr>
+                        <th><i class="require" style="color: red">*</i> 歌手:</th>
+                        <td>
+                            <input type="text" name="cate_name">
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>  &nbsp&nbsp描述:</th>
+                        <td>
+                            <input type="text" name="cate_name">
+                        </td>
+                    </tr>
+                    <tr>
+                        <th><i class="require" style="color: red">*</i> 链接:</th>
+                        <td>
+                            <input type="text" name="cate_name">
+                        </td>
+                    </tr>
+
+                    </tbody>
+
+                </table>
+                <button class="but"  onclick ="save('up');">添加</button>
+            </form>
+        </div>
+    </div>
+</div>
+<div id="search1" style="width: 100%">
+</div>
+<script type="text/javascript" >
+
+    save = function (url){
+
+        var keyWord = document.getElementsByName("cate_name");
+
+//singer singName description url
+        $.ajax({
+            url:"/savesong",
+            type:'POST',
+            dataType:"json",
+            data:{
+                songName:keyWord[0].value,
+                singer:keyWord[1].value,
+                description:keyWord[2].value,
+                songUrl:keyWord[3].value,
+            },
+            contentType:'application/x-www-form-urlencoded;charset=UTF-8',
+            success:function (arg){
+                var data = eval(arg.data);
+                var html = "";
+                var html1 = "";
+                var trhtml = "<div style='font-size: 20px; margin-left: 5% ;line-height: 50px;display: inline-block;width: 150px!important; overflow: hidden''>";
+                var trhtml1 = "</div>";
+                // singer singName description
+                    html+= trhtml+keyWord[0].value+trhtml1+trhtml + keyWord[1].value+trhtml1 +trhtml+ keyWord[2].value;
+                    var aud =  "<audio src="+keyWord[3].value+" controls='controls' style='right: 7% ;position: absolute'></audio>"
+                    html +=aud + "<br>" + trhtml1+"<hr>";
+                // document.write();
+                document.getElementById("search1").innerHTML += html+html1;
+            },
+            error:function (e) {
+            }
+
+        })
+
+    }
+
+
+
+</script>
 </body>
 </html>

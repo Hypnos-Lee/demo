@@ -17,9 +17,9 @@ public class SongController {
     SongService songService;
 
     @PostMapping("/savesong")
-    public Result<String> saveSong(@PathParam("songName")String songName,@PathParam("singer")String singer,@PathParam("description")String description,@PathParam("url")String url){
+    public Result<String> saveSong(@PathParam("songName")String songName,@PathParam("singer")String singer,@PathParam("description")String description,@PathParam("songUrl")String songUrl){
         Result<String> result = new Result<>(200,"保存成功");
-        SongEntity songEntity = new SongEntity(songName,singer,description,url);
+        SongEntity songEntity = new SongEntity(songName,singer,description,songUrl);
         songService.saveSong(songEntity);
         return result;
     }
