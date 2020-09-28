@@ -31,11 +31,18 @@ public class SongController {
         return result;
     }
 
-    @PostMapping("searchsong")
-    public Result<List<SongEntity>> searchSong(@PathParam("keyWord")String keyWord){
+    @PostMapping("/namesearch")
+    public Result<List<SongEntity>> nameSearch(@PathParam("keyWord")String keyWord){
         Result<List<SongEntity>> result = new Result<>(200,"搜索完成");
 //        result.setData(songService.findAllBySongNameOrSinger(keyWord,keyWord));
         result.setData(songService.findAllBySongName(keyWord));
+        return result;
+    }
+    @PostMapping("/singersearch")
+    public Result<List<SongEntity>> singerSearch(@PathParam("keyWord")String keyWord){
+        Result<List<SongEntity>> result = new Result<>(200,"搜索完成");
+//        result.setData(songService.findAllBySongNameOrSinger(keyWord,keyWord));
+        result.setData(songService.findAllBySinger(keyWord));
         return result;
     }
 }

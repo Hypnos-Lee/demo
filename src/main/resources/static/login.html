@@ -4,8 +4,13 @@
     <meta charset="UTF-8">
     <title>Title</title>
     <style>
+        .nav{
+            padding-left: 0px;
+            text-align: center;
+        }
         .fts20{
             font-size: 25px;
+            align-content: center;
         }
         .mr0{
             margin: 0 auto;
@@ -22,7 +27,8 @@
         .sidebar1{
             position: absolute;
             width: 20%;
-            height: 410px;
+            left: 0px;
+            /*height: 410px;*/
 
         }
         .ifameid{
@@ -30,12 +36,13 @@
         }
         .content{
             width: 80%;
-            height: 410px;
+            /*height: 410px;*/
             float: right;
         }
         hr{
             width: 97px;
-            float: left;
+
+            text-align: center;
         }
     </style>
 
@@ -53,10 +60,11 @@
     }
 </script>
 
-<div class="sidebar1" align="left" style="background: darkslategrey">
-    <div class="fts20">223-在线音乐网站</div>
-    <ul  class="nav">
-        <li><a class="fts20"  href="#menu1" ></a></li>
+<div class="sidebar1" align="left" style="background: darkslategrey; height: 95vh">
+<!--    <div align="center" style="font-size: 25px;  color: chocolate; padding-top: 50px; padding-bottom: 30px">在线音乐</div>-->
+           <ul  class="nav">
+           <li><img src="https://s1.ax1x.com/2020/09/27/0AJYWT.png" width="100%"></li>
+          <li><a class="fts20"  href="#menu1" >用户名</a></li>
         <hr >
         <li><a class="fts20"  href="#menu2"  onclick="naviget('allsong.html')">所有歌曲</a></li>
         <hr>
@@ -73,7 +81,7 @@
 
 
 <div class="content" >
-    <iframe  id="i" target="_blank" class="ifameid" name="test" align="right"  style=" width: 100%; height:100%"></iframe>
+    <iframe  id="i" target="_blank" class="ifameid" name="test" align="right"  style=" width: 100%; height:95vh"></iframe>
     <!-- end .content -->
 </div>
 

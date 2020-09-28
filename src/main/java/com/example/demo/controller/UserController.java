@@ -22,21 +22,36 @@ public class UserController {
     UserService userService;
 
 
-    @PostMapping("login")
-    public Result<String> login(@PathParam("userName") String userName, @PathParam("passWord") String passWord){
+    @PostMapping("/login")
+    public Result<UserEntity> login(@PathParam("userName") String userName, @PathParam("passWord") String passWord){
 //    public Result login(@RequestBody UserEntity requestUser){
         UserEntity requestUser = new UserEntity();
         requestUser.setUserName(userName);
         requestUser.setPassWord(passWord);
 
-        Result<String> result = new Result<>(200,"登录成功");
-        if(!userService.isExist(requestUser)){
+        Result<UserEntity> result = new Result<>(200,"登录成功");
+        if(userName==null || passWord==null){
+            result.setStatus(201);
+            result.setMsg("账号密码不能为空");
+        }
+        else if(userName.length()>20 || userName.length()<3){
+            result.setStatus(201);
+            result.setMsg("用户名长度应在3~20位之间");
+        }
+        else if(passWord.length()>20 || passWord.length()<6){
+            result.setStatus(201);
+            result.setMsg("密码长度应在6~20位之间");
+        }
+        else if(!userService.isExist(requestUser)){
             result.setStatus(201);
             result.setMsg("用户不存在");
         }
         else if(!userService.isPswCorrect(requestUser)){
             result.setStatus(201);
             result.setMsg("账号或密码错误");
+        }
+        else{
+            result.setData(userService.getUserByName(userName));
         }
         return result;
     }
@@ -48,7 +63,20 @@ public class UserController {
         requestUser.setPassWord(passWord);
 
         Result<String > result = new Result<String >(200,"注册成功");
-        if(userService.isExist(requestUser)){
+
+        if(userName==null || passWord==null){
+            result.setStatus(201);
+            result.setMsg("账号密码不能为空");
+        }
+        else if(userName.length()>20 || userName.length()<3){
+            result.setStatus(201);
+            result.setMsg("用户名长度应在3~20位之间");
+        }
+        else if(passWord.length()>20 || passWord.length()<6){
+            result.setStatus(201);
+            result.setMsg("密码长度应在6~20位之间");
+        }
+        else if(userService.isExist(requestUser)){
             result.setStatus(201);
             result.setMsg("用户已存在");
         }
@@ -58,8 +86,4 @@ public class UserController {
         return result;
     }
 
-    @PostMapping("/getmsg")
-    public UserEntity getUserMsgByName(@PathParam("userName")String userName){
-        return userService.getUserByName(userName);
-    }
 }
