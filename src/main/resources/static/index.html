@@ -3,29 +3,26 @@
 <head>
 
     <meta charset="UTF-8">
-    <title>登录</title>
-
+    <title>Login</title>
     <style>
-        .mr0{
-            margin: 0 auto;
-        }
     </style>
-
+    <link rel="stylesheet" href="login.css" type="text/css" />
     <script src="http://libs.baidu.com/jquery/1.9.0/jquery.js"></script>
     <script src="https://libs.baidu.com/jquary/3.3.1/jquary.min.js"></script>
 </head>
 <body>
+<div id="login">
+    <h1>Login</h1>
+    <form action=""  method="post" onsubmit="return false" id="formtest">
 
-<form action=""  method="post" onsubmit="return false" id="formtest">
-    <div class="mr0" style="width: 200px;height: 200px">
-        <p >登录</p>
-        <input type="text" name="userName" id="userName"   style="color:cyan;" placeholder="登录/输入账号/密码 "><br>
-        <input type="password" name="passWord" id="passWord">
-        <input type="button" value="登录" onclick ="sign('in');"/>
-        <input type="button" value="注册" onclick ="sign('up');"/>
-    </div>
-</form>
-
+            <input type="text"  name="userName" id="userName"   style="color:cyan;" placeholder="登录/输入账号/密码 "><br>
+            <input type="password" name="passWord" id="passWord">
+    <!--        <input type="button" value="登录" onclick ="sign('in');"/>-->
+    <!--        <input type="button" value="注册" onclick ="sign('up');"/>-->
+        <button class="but"   onclick ="sign('in');">登录</button>
+        <button class="but"  style="float: right" onclick ="sign('up');">注册</button>
+    </form>
+</div>
 <script type="text/javascript" >
 
     sign = function (e){

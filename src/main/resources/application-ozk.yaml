@@ -1,4 +1,7 @@
 spring:
+  thymeleaf:
+    cache: false        # 禁用缓存
+    mode: LEGACYHTML5   # 非严格型检查 默认是html 严格检查
   mvc:
     static-path-pattern: /**
   resources:

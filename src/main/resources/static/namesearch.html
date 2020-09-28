@@ -3,8 +3,46 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <script src="http://libs.baidu.com/jquery/1.9.0/jquery.js"></script>
+    <script src="https://libs.baidu.com/jquary/3.3.1/jquary.min.js"></script>
 </head>
-<body>
-namesong
+<body >
+
+
+
+
+<script>
+    function login (){
+
+        $.ajax({
+            url:'/allsong',
+            type:'POST',
+            dataType:"json",
+            contentType:'application/x-www-form-urlencoded;charset=UTF-8',
+            success:function (arg){
+                var data = eval(arg.data);
+                var html = "<table>";
+
+                var html1 = "</table>";
+                var trhtml = "<tr>";
+                var trhtml1 = "</tr>";
+                // singer singName description
+                for (var i = 0 ; i < data.length;i++ ){
+                    html+= trhtml+data[i].singer+trhtml1 + trhtml+data[i].songName+trhtml1 + trhtml+data[i].description+trhtml1 +"<br>";
+                    var aud =  "<audio src="+data[i].url+" controls='controls'></audio>"
+                    html +=aud + "<br>" + "<hr>";
+                }
+                document.write(html+html1);
+            },
+            error:function (e) {
+            }
+
+        })
+    }
+    window.onload = function (ev) {
+
+    }
+</script>
+
 </body>
 </html>
