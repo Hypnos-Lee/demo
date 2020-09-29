@@ -41,7 +41,7 @@ public class SongEntity {
         this.description = description;
     }
 
-    public void setUrl(String url) {
+    public void setSongUrl(String url) {
         this.songUrl = url;
     }
 
@@ -61,7 +61,7 @@ public class SongEntity {
         return description;
     }
 
-    public String getUrl() {
+    public String getSongUrl() {
         return songUrl;
     }
 }
